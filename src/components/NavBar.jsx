@@ -2,7 +2,6 @@ import React from "react";
 
 function NavBar() {
   return (
-    <div className="bg-slate-800 min-h-screen">
       <div className="h-12 flex items-center justify-center gap-x-4 bg-slate-700 mb-6">
         <h1 className="md:text-xl text-sm font-bold text-slate-300">
           Inventory App
@@ -11,7 +10,6 @@ function NavBar() {
           7
         </span>
       </div>
-    </div>
   );
 }
 
