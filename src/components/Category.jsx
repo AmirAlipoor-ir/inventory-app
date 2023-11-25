@@ -19,7 +19,7 @@ function Category() {
       ...categoryFormData,
       createdAt: new Date().toISOString(),
     };
-    setCategories((prevState)=>[...prevState, newCategory]);
+    setCategories((prevState) => [...prevState, newCategory]);
     setCategoryFormData({ title: "", description: "" });
   };
 
