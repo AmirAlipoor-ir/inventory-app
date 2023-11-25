@@ -1,6 +1,6 @@
 import React from "react";
 
-function Products() {
+function Products({ categories }) {
   return (
     <div className="mb-6">
       <h2 className="text-xl text-slate-300 font-bold mb-2">Add New Product</h2>
@@ -41,7 +41,22 @@ function Products() {
             name="product-category"
             id="product-category"
             className="bg-transparent text-slate-400 rounded-xl w-full"
-          ></select>
+          >
+            <option className="bg-slate-500 text-slate-300" value="">
+              select a category
+            </option>
+            {categories.map((category) => {
+              return (
+                <option
+                  key={category.id}
+                  className="bg-slate-500 text-slate-300"
+                  value=""
+                >
+                  {category.title}
+                </option>
+              );
+            })}
+          </select>
         </div>
         <div className="flex items-center justify-between gap-x-4">
           <button
