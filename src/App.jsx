@@ -1,6 +1,7 @@
 import "./App.css";
 import Category from "./components/Category";
 import NavBar from "./components/NavBar";
+import Products from "./components/Products";
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
         <NavBar />
         <div className="container max-w-screen-sm mx-auto p-4">
           <Category />
+          <Products/>
         </div>
       </div>
     </div>
