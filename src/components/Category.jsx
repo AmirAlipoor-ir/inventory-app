@@ -7,7 +7,7 @@ function Category({ setCategories }) {
     description: "",
   });
 
-  const shangeHandler = (e) => {
+  const changeHandler = (e) => {
     const { name, value } = e.target;
     setCategoryFormData({ ...categoryFormData, [name]: value });
   };
@@ -17,7 +17,7 @@ function Category({ setCategories }) {
     const newCategory = {
       ...categoryFormData,
       createdAt: new Date().toISOString(),
-      id: new Date().getTime,
+      id: new Date().getTime(),
     };
     setCategories((prevState) => [...prevState, newCategory]);
     setCategoryFormData({ title: "", description: "" });
@@ -36,7 +36,7 @@ function Category({ setCategories }) {
               type="text"
               name="title"
               value={categoryFormData.title}
-              onChange={shangeHandler}
+              onChange={changeHandler}
               className="bg-transparent rounded-xl border border-slate-500 text-slate-400 w-full md:w-auto"
             />
           </div>
@@ -47,7 +47,7 @@ function Category({ setCategories }) {
               type=" text"
               name="description"
               value={categoryFormData.description}
-              onChange={shangeHandler}
+              onChange={changeHandler}
             ></textarea>
           </div>
           <div className="flex items-center justify-between gap-x-4">
