@@ -1,29 +1,28 @@
 import React, { useState } from "react";
 
-function Products({ categories,setProducts }) {
+function Products({ categories, setProducts }) {
   const [productsFormData, setProductsFormData] = useState({
     title: "",
     quantity: 0,
     categoryId: "",
   });
 
-
   const changeHandler = (e) => {
     const { name, value } = e.target;
-    console.log(name,value);
+    console.log(name, value);
     setProductsFormData({ ...productsFormData, [name]: value });
   };
 
-  const addNewProduct =(e)=>{
+  const addNewProduct = (e) => {
     e.preventDefault();
     const newProduct = {
-        ...productsFormData,
-        createdAt: new Date().toISOString(),
-        id: new Date().getTime(),
-      };
-      setProducts((prevState) => [...prevState, newProduct]);
-      setProductsFormData({ title: "", quantity: "",categoryId:"" });
-  }
+      ...productsFormData,
+      createdAt: new Date().toISOString(),
+      id: new Date().getTime(),
+    };
+    setProducts((prevState) => [...prevState, newProduct]);
+    setProductsFormData({ title: "", quantity: "", categoryId: "" });
+  };
   return (
     <div className="mb-6">
       <h2 className="text-xl text-slate-300 font-bold mb-2">Add New Product</h2>
@@ -50,7 +49,6 @@ function Products({ categories,setProducts }) {
           <input
             value={productsFormData.quantity}
             onChange={changeHandler}
-
             className="bg-transparent rounded-xl border border-slate-500 text-slate-400 w-full md:w-auto"
             type="number"
             name="quantity"
@@ -66,7 +64,6 @@ function Products({ categories,setProducts }) {
           <select
             value={productsFormData.categoryId}
             onChange={changeHandler}
-
             name="categoryId"
             className="bg-transparent text-slate-400 rounded-xl w-full"
           >
