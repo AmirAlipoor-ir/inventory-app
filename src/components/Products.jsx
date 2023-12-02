@@ -9,7 +9,6 @@ function Products({ categories, setProducts }) {
 
   const changeHandler = (e) => {
     const { name, value } = e.target;
-    console.log(name, value);
     setProductsFormData({ ...productsFormData, [name]: value });
   };
 
@@ -26,7 +25,7 @@ function Products({ categories, setProducts }) {
   return (
     <div className="mb-6">
       <h2 className="text-xl text-slate-300 font-bold mb-2">Add New Product</h2>
-      <form className="bg-slate-700 p-4 rounded-xl flex flex-col gap-y-4">
+      <form className="bg-slate-700 p-4 rounded-xl flex flex-col gap-y-4" onSubmit={addNewProduct}>
         <div>
           <label htmlFor="product-title" className="block mb-1 text-slate-400">
             title
@@ -67,7 +66,7 @@ function Products({ categories, setProducts }) {
             name="categoryId"
             className="bg-transparent text-slate-400 rounded-xl w-full"
           >
-            <option className="bg-slate-500 text-slate-300" value="">
+            <option className="bg-slate-500 text-slate-300" value={categories.id}>
               select a category
             </option>
             {categories.map((category) => {
@@ -85,7 +84,8 @@ function Products({ categories, setProducts }) {
         </div>
         <div className="flex items-center justify-between gap-x-4">
           <button
-            onClick={addNewProduct}
+          type="submit"
+            // onClick={addNewProduct}
             className="flex-1 bg-slate-500 text-slate-200 rounded-xl py-2"
           >
             Add new Product
