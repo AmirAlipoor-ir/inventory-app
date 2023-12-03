@@ -7,11 +7,12 @@ import ProductList from "./components/ProductList";
 import Filter from "./components/Filter";
 
 function App() {
-  const [categories, setCategories] = useState(
-    () => JSON.parse(localStorage.getItem("CATEGORIES")) || []
+  const [categories, setCategories] = useState([]
+    // () => JSON.parse(localStorage.getItem("CATEGORIES")) || []
   );
   const [products, setProducts] = useState(
-    () => JSON.parse(localStorage.getItem("PRODUCTS")) || []
+    []
+    // () => JSON.parse(localStorage.getItem("PRODUCTS")) || []
   );
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [sort, setSort] = useState("latest");
@@ -47,12 +48,12 @@ function App() {
     });
   };
 
-  useEffect(() => {
-    localStorage.setItem("PRODUCTS", JSON.stringify(products));
-  }, [products]);
-  useEffect(() => {
-    localStorage.setItem("CATEGORIES", JSON.stringify(categories));
-  }, [categories]);
+  // useEffect(() => {
+  //   localStorage.setItem("PRODUCTS", JSON.stringify(products));
+  // }, [products]);
+  // useEffect(() => {
+  //   localStorage.setItem("CATEGORIES", JSON.stringify(categories));
+  // }, [categories]);
   return (
     <div>
       <div className="bg-slate-800 min-h-screen">

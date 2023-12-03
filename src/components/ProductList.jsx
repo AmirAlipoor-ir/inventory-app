@@ -1,9 +1,9 @@
 import React from "react";
 
 function ProductList({ products, categories, setProducts }) {
-  // const findCategory = (categoryId) => {
-  //   return categories.find((c) => c.id === parseInt(categoryId));
-  // };
+  const findCategory = (categoryId) => {
+  return categories.find((c) => c.id === parseInt(categoryId)).title;
+  };
 
   const deleteProduct = (productId) => {
     const filteredProducts = products.filter(
@@ -26,8 +26,7 @@ function ProductList({ products, categories, setProducts }) {
                 {new Date(product.createdAt).toLocaleDateString("fa-IR")}
               </span>
               <span className="block px-3 py-0.5 text-slate-400 border border-slate-400 text-sm rounded-2xl">
-                {/* {findCategory(product.categoryId)} */}
-                
+                {findCategory(product.categoryId)}
               </span>
               <span className="flex items-center justify-center w-7 h-7 rounded-full bg-slate-500 border-2 border-slate-300 text-slate-300">
                 {product.quantity}
