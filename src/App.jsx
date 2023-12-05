@@ -7,23 +7,20 @@ import ProductList from "./components/ProductList";
 import Filter from "./components/Filter";
 
 function App() {
-  const [categories, setCategories] = useState([]
-    // () => JSON.parse(localStorage.getItem("CATEGORIES")) || []
-  );
-  const [products, setProducts] = useState(
-    []
-    // () => JSON.parse(localStorage.getItem("PRODUCTS")) || []
-  );
+  const [categories, setCategories] = useState([]);
+  const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [sort, setSort] = useState("latest");
+  const [selectedCategory, setSelectedCategory] = useState("");
   const [searchValue, setSearchValue] = useState("");
 
   useEffect(() => {
     let result = products;
     result = filterSearchTitle(result);
+    result = filterSelectedCategory(result);
     result = sortDate(result);
     setFilteredProducts(result);
-  }, [products, sort, searchValue]);
+  }, [products, sort, searchValue, selectedCategory]);
 
   const sortHandler = (e) => {
     setSort(e.target.value);
@@ -48,16 +45,39 @@ function App() {
     });
   };
 
-  // useEffect(() => {
-  //   localStorage.setItem("PRODUCTS", JSON.stringify(products));
-  // }, [products]);
-  // useEffect(() => {
-  //   localStorage.setItem("CATEGORIES", JSON.stringify(categories));
-  // }, [categories]);
+  const selectCategoryHandler = (e) => {
+    setSelectedCategory(e.target.value);
+  };
+
+  const filterSelectedCategory = (array) => {
+    if (!selectedCategory) return array;
+    return array.filter((item) => item.categoryId === selectedCategory);
+  };
+
+  useEffect(() => {
+    const savedProducts = JSON.parse(localStorage.getItem("products")) || [];
+    const savedCategories =
+      JSON.parse(localStorage.getItem("categories")) || [];
+    setProducts(savedProducts);
+    setCategories(savedCategories);
+  }, []);
+
+  useEffect(() => {
+    if (products.length) {
+      localStorage.setItem("products", JSON.stringify(products));
+    }
+  }, [products]);
+
+  useEffect(() => {
+    if (categories.length) {
+      localStorage.setItem("categories", JSON.stringify(categories));
+    }
+  }, [categories]);
+
   return (
     <div>
       <div className="bg-slate-800 min-h-screen">
-        <NavBar />
+        <NavBar products={products} />
         <div className="container max-w-screen-sm mx-auto p-4">
           <Category setCategories={setCategories} />
           <Products categories={categories} setProducts={setProducts} />
@@ -66,6 +86,9 @@ function App() {
             onSearch={searchHandler}
             sort={sort}
             searchValue={searchValue}
+            categories={categories}
+            selectedCategory={selectedCategory}
+            onSelectCategory={selectCategoryHandler}
           />
           <ProductList
             products={filteredProducts}
