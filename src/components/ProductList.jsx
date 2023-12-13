@@ -12,13 +12,13 @@ function ProductList({ products, categories, setProducts }) {
     setProducts(filteredProducts);
   };
   return (
-    <div>
+    <div className="">
       <h2 className="text-xl text-slate-300 font-bold mb-2">Product list</h2>
       {products.map((product) => {
         return (
           <div
             key={product.id}
-            className="flex items-center justify-between mb-2 w-full min-w-[400px]"
+            className="flex items-center justify-between mb-2 w-full min-w-[250px]"
           >
             <span className="text-slate-400">{product.title}</span>
             <div className="flex items-center gap-x-3">

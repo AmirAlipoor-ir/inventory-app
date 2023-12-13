@@ -1,7 +1,13 @@
-import React, { useState } from "react";
-
-function Filter({ onSort, onSearch, sort, searchValue,categories,selectedCategory,onSelectCategory }) {
-  return ( 
+function Filter({
+  onSort,
+  onSearch,
+  sort,
+  searchValue,
+  categories,
+  selectedCategory,
+  onSelectCategory,
+}) {
+  return (
     <div>
       <div className="flex items-center justify-between mb-6">
         <label className="text-slate-500 text-lg">search</label>
@@ -43,10 +49,16 @@ function Filter({ onSort, onSearch, sort, searchValue,categories,selectedCategor
           <option className="bg-slate-500 text-slate-300" value="">
             All
           </option>
-          {categories.map(category=>{
-           return <option className="bg-slate-500 text-slate-300" value={category.id} key={category.id}>
-           {category.title}
-         </option>
+          {categories.map((category) => {
+            return (
+              <option
+                className="bg-slate-500 text-slate-300"
+                value={category.id}
+                key={category.id}
+              >
+                {category.title}
+              </option>
+            );
           })}
         </select>
       </div>
