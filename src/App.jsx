@@ -14,6 +14,8 @@ function App() {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [searchValue, setSearchValue] = useState("");
 
+console.log("hello world")
+
   useEffect(() => {
     let result = products;
     result = filterSearchTitle(result);
